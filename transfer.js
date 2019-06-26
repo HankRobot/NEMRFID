@@ -1,4 +1,4 @@
-const nem2Sdk = require("C:/Users/User/Desktop/NEM/Catapult/Catapult in JS/node_modules/nem2-sdk");
+const nem2Sdk = require("nem2-sdk");
 
 const Account = nem2Sdk.Account,
     Address = nem2Sdk.Address,

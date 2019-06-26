@@ -1,0 +1,23 @@
+{
+  "name": "lorablockchain",
+  "version": "1.0.0",
+  "description": "Living the dream, implementing NEM Catapult with LoRa XD",
+  "main": "transfer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HankRobot/LoRaBlockchain.git"
+  },
+  "author": "HankBot",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HankRobot/LoRaBlockchain/issues"
+  },
+  "homepage": "https://github.com/HankRobot/LoRaBlockchain#readme",
+  "dependencies": {
+    "nem2-sdk": "^0.11.6",
+    "rxjs": "^6.5.2"
+  }
+}
