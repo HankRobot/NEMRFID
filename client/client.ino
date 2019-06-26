@@ -89,33 +89,19 @@ void loop()
     if (rf95.recv(buf, &len))
     {
       Serial.print("Got reply: ");
-      Serial.println((char*)buf);
-      Serial.print("RSSI: ");
-      Serial.println(rf95.lastRssi(), DEC);
+      Serial.print((char*)buf);
+      Serial.print(" RSSI: ");
+      Serial.print(rf95.lastRssi(), DEC);
       digitalWrite(3,LOW);    
     }
     else
     {
       Serial.println("Receive failed");
-      Serial.print("Sending "); Serial.println(radiopacket); delay(10);
-      rf95.send((uint8_t*)radiopacket.c_str(), radiopacket.length()+1);
-
-      Serial.println("Waiting for packet to complete..."); delay(10);
-      rf95.waitPacketSent();
-      digitalWrite(3,LOW);
-      delay(2000);  
     }
   }
   else
   {
     Serial.println("No reply, is there a listener around?");
-    Serial.print("Sending "); Serial.println(radiopacket); delay(10);
-    rf95.send((uint8_t*)radiopacket.c_str(), radiopacket.length()+1);
-
-    Serial.println("Waiting for packet to complete..."); delay(10);
-    rf95.waitPacketSent();
-    digitalWrite(3,LOW);
-    delay(2000);  
   }
   delay(10000); 
 }
