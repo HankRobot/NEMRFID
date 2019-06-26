@@ -4,6 +4,7 @@ ser = serial.Serial('/dev/ttyUSB0',9600)     #connection to the Arduino
 
 while True:
     got_serial=ser.readline()
+    print (got_serial)
     if got_serial[0:4] == b'Got:':
         trans_no = str(got_serial)   #transmission number
         trans_no = trans_no[7:-3]
@@ -34,4 +35,4 @@ while True:
         RSSI_value = RSSI_value[2:-5]
         print (RSSI_value)
     
-    #print (got_serial)
+    
