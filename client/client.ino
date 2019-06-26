@@ -23,7 +23,7 @@ RH_RF95 rf95(RFM95_CS, RFM95_INT);
 void setup() 
 {
   pinMode(RFM95_RST, OUTPUT);
-  pinMode(3,OUTPUT);
+  pinMode(3,HIGH);
   digitalWrite(RFM95_RST, HIGH);
 
   while (!Serial);
@@ -63,9 +63,10 @@ int16_t packetnum = 0;  // packet counter, we increment per xmission
 
 void loop()
 {
+  digitalWrite(3,HIGH);
   Serial.println("Sending to rf95_server");
   // Send a message to rf95_server
-  digitalWrite(3,HIGH);
+
   String radiopacket = "Hello World #";
   radiopacket += String(packetnum++);
   radiopacket += " from ";
@@ -82,17 +83,15 @@ void loop()
 
   Serial.println("Waiting for reply..."); 
   delay(10);
-  if (rf95.waitAvailableTimeout(1000))
+  if (rf95.waitAvailableTimeout(2000))
   { 
-    digitalWrite(3,HIGH);
     // Should be a reply message for us now   
     if (rf95.recv(buf, &len))
     {
       Serial.print("Got reply: ");
-      Serial.print((char*)buf);
-      Serial.print(" RSSI: ");
-      Serial.print(rf95.lastRssi(), DEC);
-      digitalWrite(3,LOW);    
+      Serial.println((char*)buf);
+      Serial.print("RSSI: ");
+      Serial.println(rf95.lastRssi(), DEC);    
     }
     else
     {
@@ -103,5 +102,6 @@ void loop()
   {
     Serial.println("No reply, is there a listener around?");
   }
-  delay(10000); 
+  digitalWrite(3,LOW);
+  delay(20000); 
 }
