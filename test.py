@@ -1,4 +1,5 @@
 import subprocess
 
-s = subprocess.check_output(["node", "transfer.js"])
-print("Output: " + str(s)[1:-1])
+print("Please enter your password")
+password = input()
+s = subprocess.check.output(["node","transfer.js"+ str(password)])
