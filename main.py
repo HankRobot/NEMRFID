@@ -1,6 +1,7 @@
 import serial
 import subprocess
 import codecs
+import hashlib
 
 ser = serial.Serial('/dev/ttyUSB0',9600)     #connection to the Arduino
 
