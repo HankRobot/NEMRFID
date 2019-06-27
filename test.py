@@ -10,10 +10,9 @@ bpass = str.encode(serialID+password)
 privatekey = hashlib.sha3_256(bpass).hexdigest()
 print(privatekey)
 
-
-#s = subprocess.check_output(["node","transfer.js",privatekey])
-#s = codecs.decode(s,'unicode_escape')
-#print(s)
+s = subprocess.check_output(["node","transfer.js",privatekey])
+s = codecs.decode(s,'unicode_escape')
+print(s)
 
 
 

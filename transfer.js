@@ -11,6 +11,16 @@ const Account = nem2Sdk.Account,
     TransferTransaction = nem2Sdk.TransferTransaction,
     UInt64 = nem2Sdk.UInt64;
 
+//Retrieve shell 
+var str = "";
+
+for (var i = 2; i < process.argv.length; i++) {
+    str += process.argv[i] + " ";
+}
+
+console.log("Your private key is:")
+console.log(str)
+
 /* start block 01 */
 const mosaicId = "77a1969932d987d7";     						//your mosaic mosaicId
 const address = "SADR23O6XLZXVHUKI4BLBFXY2Z7BPRZEUW5ESAQ6";		//the person's address you want to send to
