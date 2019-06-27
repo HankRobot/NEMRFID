@@ -64,7 +64,6 @@ int16_t packetnum = 0;  // packet counter, we increment per xmission
 void loop()
 {
   digitalWrite(3,HIGH);
-  bool send_status = false;
   Serial.println("Sending to rf95_server");
   // Send a message to rf95_server
 
@@ -84,9 +83,6 @@ void loop()
 
   Serial.println("Waiting for reply..."); 
   delay(10);
-  while (send_status==false)
-  {
-    digitalWrite(3,HIGH);
     if (rf95.waitAvailableTimeout(1000))
     { 
       // Should be a reply message for us now   
@@ -96,8 +92,6 @@ void loop()
         Serial.println((char*)buf);
         Serial.print("RSSI: ");
         Serial.println(rf95.lastRssi(), DEC);
-        send_status = true;
-        break;    
       }
       else
       {
@@ -107,13 +101,7 @@ void loop()
     else
     {
       Serial.println("No reply, is there a listener around? Attempting to send again");
-      rf95.send((uint8_t*)radiopacket.c_str(), radiopacket.length()+1);
-      Serial.println("Waiting for packet to complete..."); delay(10);
-      rf95.waitPacketSent();
-      digitalWrite(3,LOW);
-      delay(3000);
     }
-  }
   digitalWrite(3,LOW);
   delay(20000); 
 }
