@@ -12,7 +12,7 @@
 #define RFM95_CS 10
 #define RFM95_RST 7
 #define RFM95_INT 2
-#define node_id "HANK"
+#define node_id "B"
 
 // Change to 434.0 or other frequency, must match RX's freq!
 #define RF95_FREQ 915.0
@@ -23,7 +23,6 @@ RH_RF95 rf95(RFM95_CS, RFM95_INT);
 void setup() 
 {
   pinMode(RFM95_RST, OUTPUT);
-  pinMode(3,HIGH);
   digitalWrite(RFM95_RST, HIGH);
 
   while (!Serial);
@@ -63,8 +62,6 @@ int16_t packetnum = 0;  // packet counter, we increment per xmission
 
 void loop()
 {
-  digitalWrite(3,HIGH);
-  bool send_status = false;
   Serial.println("Sending to rf95_server");
   // Send a message to rf95_server
 
@@ -84,36 +81,24 @@ void loop()
 
   Serial.println("Waiting for reply..."); 
   delay(10);
-  while (send_status==false)
-  {
-    digitalWrite(3,HIGH);
-    if (rf95.waitAvailableTimeout(1000))
-    { 
-      // Should be a reply message for us now   
-      if (rf95.recv(buf, &len))
-      {
-        Serial.print("Got reply: ");
-        Serial.println((char*)buf);
-        Serial.print("RSSI: ");
-        Serial.println(rf95.lastRssi(), DEC);
-        send_status = true;
-        break;    
-      }
-      else
-      {
-        Serial.println("Receive failed");
-      }
+  if (rf95.waitAvailableTimeout(1000))
+  { 
+    // Should be a reply message for us now   
+    if (rf95.recv(buf, &len))
+   {
+      Serial.print("Got reply: ");
+      Serial.println((char*)buf);
+      Serial.print("RSSI: ");
+      Serial.println(rf95.lastRssi(), DEC);    
     }
     else
     {
-      Serial.println("No reply, is there a listener around? Attempting to send again");
-      rf95.send((uint8_t*)radiopacket.c_str(), radiopacket.length()+1);
-      Serial.println("Waiting for packet to complete..."); delay(10);
-      rf95.waitPacketSent();
-      digitalWrite(3,LOW);
-      delay(3000);
+      Serial.println("Receive failed");
     }
   }
-  digitalWrite(3,LOW);
-  delay(20000); 
+  else
+  {
+    Serial.println("No reply, is there a listener around?");
+  }
+  delay(10000); 
 }

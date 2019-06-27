@@ -1,6 +1,6 @@
 {
     "board": "arduino:avr:uno",
-    "port": "COM3",
-    "sketch": "client\\client.ino",
+    "port": "COM6",
+    "sketch": "testserver/testserver.ino",
     "programmer": "Arduino as ISP"
 }
