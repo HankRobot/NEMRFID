@@ -1,6 +1,6 @@
 {
     "board": "arduino:avr:uno",
     "port": "COM3",
-    "sketch": "client/client.ino",
+    "sketch": "RFIDRead/RFIDRead.ino",
     "programmer": "Arduino as ISP"
 }
