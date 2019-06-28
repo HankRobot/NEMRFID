@@ -1,3 +1,8 @@
+#include <deprecated.h>
+#include <MFRC522.h>
+#include <MFRC522Extended.h>
+#include <require_cpp11.h>
+
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * Example sketch/program showing how to read data from a PICC to serial.
