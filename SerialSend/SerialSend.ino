@@ -1,4 +1,4 @@
-char mystr[5] = "Hello"; //String data
+char mystr[11] = "0B 12 20 23"; //String data
 
 void setup() {
   // Begin the Serial at 9600 Baud
@@ -6,6 +6,6 @@ void setup() {
 }
 
 void loop() {
-  Serial.write(mystr,5); //Write the serial data
+  Serial.write(mystr,11); //Write the serial data
   delay(1000);
 }

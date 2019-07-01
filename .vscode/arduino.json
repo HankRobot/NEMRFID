@@ -1,6 +1,6 @@
 {
     "board": "arduino:avr:uno",
     "port": "COM3",
-    "sketch": "SerialSend/SerialSend.ino",
+    "sketch": "SerialRead/SerialRead.ino",
     "programmer": "Arduino as ISP"
 }
