@@ -12,14 +12,14 @@ const Account = nem2Sdk.Account,
     UInt64 = nem2Sdk.UInt64;
 
 //Retrieve shell 
-var str = "";
+var privateKey = "";
 
 for (var i = 2; i < process.argv.length; i++) {
-    str += process.argv[i] + " ";
+    privateKey += process.argv[i];
 }
 
 console.log("Your private key is:")
-console.log(str)
+console.log(privateKey)
 
 /* start block 01 */
 const mosaicId = "77a1969932d987d7";     						//your mosaic mosaicId
@@ -35,7 +35,6 @@ const transferTransaction = TransferTransaction.create(
 /* end block 01 */
 
 /* start block 02 */
-const privateKey = str; //sender's private key
 const networkGenerationHash = process.env.NETWORK_GENERATION_HASH;
 
 const account = Account.createFromPrivateKey(privateKey, NetworkType.MIJIN_TEST);
