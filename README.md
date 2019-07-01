@@ -1,5 +1,6 @@
 # LoRaBlockchain :laughing:
 Living the dream, implementing NEM Catapult with LoRa XD
+This repository is about RFID info transaction via LoRa nodes using NEM Catapult Mosaics Transaction
 
 # This repository is currently in development...
 1. Folder client is for default testing between Folder server, you need two LoRa Nodes to test this out.
