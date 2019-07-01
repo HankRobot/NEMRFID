@@ -1,32 +1,39 @@
 /*
  * 
- * All the resources for this project: https://randomnerdtutorials.com/
- * Modified by Rui Santos
+ * All the resources for this project: https://github.com/HankRobot/LoRaBlockchain
+ * Built by HankRobot
  * 
- * Created by FILIPEFLOP
+ * Check out my website https://hankrobot.wordpress.com/
  * 
  */
- 
 #include <SPI.h>
 #include <MFRC522.h>
  
 #define SS_PIN 8
 #define RST_PIN 9
 MFRC522 mfrc522(SS_PIN, RST_PIN);   // Create MFRC522 instance.
- 
+
+/*--------------------------------------------------------SoftwareSerial communication to Arduino---------------------------------------*/
+#include <SoftwareSerial.h>
+SoftwareSerial mySerial(2, 3); // RX, TX
+/*--------------------------------------------------------main setup function-----------------------------------------------------------*/
 void setup() 
 {
-  pinMode(3,OUTPUT);
+  pinMode(4,OUTPUT);
   Serial.begin(9600);   // Initiate a serial communication
   SPI.begin();      // Initiate  SPI bus
   mfrc522.PCD_Init();   // Initiate MFRC522
   Serial.println("Approximate your card to the reader...");
   Serial.println();
+
+  //Begin setup for SoftwareSerial
+  mySerial.begin(4800);
+  mySerial.println("Hello, world?");
 }
 
 void loop() 
 {
-  digitalWrite(3,LOW);
+  digitalWrite(4,LOW);
   // Look for new cards
   if ( ! mfrc522.PICC_IsNewCardPresent()) 
   {
@@ -50,11 +57,12 @@ void loop()
   Serial.println();
   Serial.print("Message : ");
   content.toUpperCase();
-  Serial.print(content.substring(1));
   if (content.substring(1) == "0B 12 20 23"){ //change here the UID of the card/cards that you want to give access
-    digitalWrite(3,HIGH);
-    Serial.println(" Authorized access");
+    digitalWrite(4,HIGH);
+    Serial.println("Authorized access");
     Serial.println();
+
+    mySerial.write(content.substring(1),11);
     delay(3000);
   }
   else{
