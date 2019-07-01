@@ -10,7 +10,7 @@ while True:
     message = codecs.decode(message,'unicode_escape')
     print (message)
     if(message[0:3]=='Got'):
-        serialID = "1234567"
+        serialID = message[5:15]
 
         print("Please enter your password")
         password = input()

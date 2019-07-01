@@ -35,7 +35,7 @@ const transferTransaction = TransferTransaction.create(
 /* end block 01 */
 
 /* start block 02 */
-const privateKey = "694106D8410D6BD1AAEEC1A468D47BA940130CC7DF774100B6DE3B9CBDE26BC7"; //sender's private key
+const privateKey = str; //sender's private key
 const networkGenerationHash = process.env.NETWORK_GENERATION_HASH;
 
 const account = Account.createFromPrivateKey(privateKey, NetworkType.MIJIN_TEST);
