@@ -1,16 +1,15 @@
-import telegram
+import requests
 
-# Connect to our bot
-bot = telegram.Bot(token="880592734:AAE6UaNW787kdsFX6xA9RURYz6YezvofkFM")
+def telegram_bot_sendtext(bot_message):
+    
+    bot_token = '880592734:AAE6UaNW787kdsFX6xA9RURYz6YezvofkFM'
+    bot_chatID = '555564637'
+    send_text = 'https://api.telegram.org/bot' + bot_token + '/sendMessage?chat_id=' + bot_chatID + '&parse_mode=Markdown&text=' + bot_message
 
-# Waits for the first incoming message
-updates=[]
-while not updates:
-    updates = bot.getUpdates()
+    response = requests.get(send_text)
 
-# Gets the id for the active chat
-print(updates[-1].message.text)
-chat_id=updates[-1].message.chat_id
+    return response.json()
+    
 
-# Sends a message to the chat
-bot.sendMessage(chat_id=chat_id, text="It works!")
+test = telegram_bot_sendtext("Testing Telegram bot")
+print(test)
