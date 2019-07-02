@@ -47,7 +47,7 @@ while True:
 
         result = subprocess.check_output(["node","transfer.js",privatekey])
         result = codecs.decode(result,'unicode_escape')
-        print(s)
+        print(result)
         
         if(result=="Success!"):
             telegram_bot_takepicture()
