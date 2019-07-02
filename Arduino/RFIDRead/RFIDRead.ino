@@ -60,6 +60,11 @@ void loop()
   }
   else{
     //Serial.println(" Access denied");
+    for (int i = 0; i < 3; i++)
+    {
+      digitalWrite(4,HIGH);
+      delay(10);
+    }
     delay(3000);
   }
 } 

@@ -1,5 +1,35 @@
 const nem2Sdk = require("nem2-sdk");
 
+function checkvalidity(hashstring){
+    /* begin validating hash */
+    var Curl = require('node-libcurl').Curl;
+
+    var curl = new Curl();
+    var url = 'http://40.90.163.184:3000/transaction/' + hashstring + '/status';
+    console.info(url);
+
+    //'http://40.90.163.184:3000/transaction/FC1881E0B2F55866C7BB85B40420E40D1D90C2B624A18EA4851D8FA96D940555/status'
+    curl.setOpt( 'URL', url);
+    curl.setOpt( 'FOLLOWLOCATION', true );
+
+    curl.on( 'end', function( statusCode, body, headers ) {
+        const user = JSON.parse(body);
+        if (statusCode==200 && user['status']=='Success') {
+            console.info("Success!");
+        }
+        else{
+            console.info("Transaction Failed");
+        }
+        this.close();
+    });
+
+    curl.on( 'error', function ( err, errCode ) {
+        this.close();
+    });
+
+    curl.perform();
+}
+
 const Account = nem2Sdk.Account,
     Address = nem2Sdk.Address,
     Deadline = nem2Sdk.Deadline,
@@ -18,8 +48,8 @@ for (var i = 2; i < process.argv.length; i++) {
     privateKey += process.argv[i];
 }
 
-console.log("Your private key is:")
-console.log(privateKey)
+//console.log("Your private key is:")
+//console.log(privateKey)
 
 /* start block 01 */
 const mosaicId = "77a1969932d987d7";     						//your mosaic mosaicId
@@ -48,3 +78,7 @@ transactionHttp
     .announce(signedTransaction)
     .subscribe(x => console.log(x), err => console.error(err));
 /* end block 03 */
+
+setTimeout(function(){checkvalidity(signedTransaction.hash.toString())},500);
+
+
