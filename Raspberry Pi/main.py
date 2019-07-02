@@ -49,8 +49,7 @@ while True:
         result = codecs.decode(result,'unicode_escape')
         print(result)
         
-        if(result=="Success!"):
-            telegram_bot_takepicture()
-            telegram_bot_sendtext("This person scanned his RFID")
+        telegram_bot_takepicture()
+        telegram_bot_sendtext("This person scanned his RFID")
         
     
