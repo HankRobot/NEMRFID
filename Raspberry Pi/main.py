@@ -8,9 +8,9 @@ import picamera
 
 ser = serial.Serial('/dev/ttyUSB0',9600)     #connection to the Arduino
 
+bot_token = '880592734:AAE6UaNW787kdsFX6xA9RURYz6YezvofkFM'
+
 def telegram_bot_sendtext(bot_message):
-    
-    bot_token = '880592734:AAE6UaNW787kdsFX6xA9RURYz6YezvofkFM'
     bot_chatID = '555564637'
     send_text = 'https://api.telegram.org/bot' + bot_token + '/sendMessage?chat_id=' + bot_chatID + '&parse_mode=Markdown&text=' + bot_message
 
@@ -19,7 +19,7 @@ def telegram_bot_sendtext(bot_message):
     return response.json()
 
 def telegram_bot_takepicture():
-    bot = telegram.Bot(token="880592734:AAE6UaNW787kdsFX6xA9RURYz6YezvofkFM")
+    bot = telegram.Bot(token=bot_token)
 
     # Sets the id for the active chat
     chat_id='555564637'
