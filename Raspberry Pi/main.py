@@ -10,12 +10,12 @@ while True:
     message = codecs.decode(message,'unicode_escape')
     print (message)
     if(message[0:3]=='Got'):
-        serialID = message[5:15]
+        serialID = message[5:16]
 
         print("Please enter your password")
         password = input()
         bpass = str.encode(serialID+password)
-        privatekey = hashlib.sha3_256(bpass).hexdigest()
+        privatekey = hashlib.sha256(bpass).hexdigest()
         print(privatekey)
 
         s = subprocess.check_output(["node","transfer.js",privatekey])

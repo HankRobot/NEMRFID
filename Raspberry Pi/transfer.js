@@ -1,7 +1,21 @@
 const nem2Sdk = require("nem2-sdk");
 
+function checkvalidity(hashstring)
+{
+    var request=require('request');
+    var url = 'http://40.90.163.184:3000/transaction/' + hashstring + '/status';
+    request.get(url,null,function(err,res,body){
+        const user = JSON.parse(body);
+        if (res.statusCode==200 && user['status']=='Success') {
+            console.info("Success!");
+        }
+        else{
+            console.info("Transaction Failed");
+        }
+    });
+}
+/*
 function checkvalidity(hashstring){
-    /* begin validating hash */
     var Curl = require('node-libcurl').Curl;
 
     var curl = new Curl();
@@ -29,7 +43,7 @@ function checkvalidity(hashstring){
 
     curl.perform();
 }
-
+*/
 const Account = nem2Sdk.Account,
     Address = nem2Sdk.Address,
     Deadline = nem2Sdk.Deadline,
