@@ -20,7 +20,9 @@ This repository is about RFID info transaction via LoRa nodes using NEM Catapult
 1. Download the zip code of this file, then extract it.
 1. Alternatively you can fork this project and open in Visual Studios and use the Team Explorer in Visual Studios to help you clone the entire project.
 2. Open the folder and open a command prompt, and type npm install.
-3. Once finished, open the folder with Visual Studio Code / Visual Studio.
+3. Once finished, open the folder with Visual Studio Code / Arduino depending on the file.
+4. main.py is executed on the raspberry pi by typing in the terminal python main.py, make sure transfer.js is in the same directory.
+5. RFIDRead.ino is uploaded to Arduino with RFID hardware, SerialRead.ino is uploaded to Arduino with LoRa firmware, both are connected TX to RX.
 
 # Contribute
 1. Use case of LoRa + Blockchain, need ideas, feel free to open an issue about it.
