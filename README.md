@@ -7,14 +7,11 @@ This repository is about RFID info transaction via LoRa nodes using NEM Catapult
 2. Folder nem message contains code for receiving and sending message via NEM Blockchain
 3. Folder nem multisignature contains code for multisignature account transactions, still in development.
 4. Folder node_modules should not be touched as it contains js libraries.
-5. Folder RFID_Config is to test whether RFID is working or not.
-6. Folder RFIDRead reads the ID of a card and serial writes it out to another Arduino due to insufficient pins for RFID + LoRa Configuration.
-7. Folder SerialRead reads serial from another arduino and attempts to send a LoRa message to Raspberry Pi.
-8. Folder SerialSend is a default testing code that sends static strings to another arduino.
-9. Folder server is for default testing between Folder client.
-10. Folder testclient and testserver is for default testing as well.
-11. main.py, the main code to be run on the raspberry pi.
-12. transfer.js, executed by main.py via shell to transfer mosaics to the blockchain.
+5. Folder RFIDRead reads the ID of a card and serial writes it out to another Arduino due to insufficient pins for RFID + LoRa Configuration.
+6. Folder SerialRead reads serial from another arduino and attempts to send a LoRa message to Raspberry Pi.
+7. Folder server is for default testing between Folder client.
+8. main.py, the main code to be run on the raspberry pi.
+9. transfer.js, executed by main.py via shell to transfer mosaics to the blockchain.
 
 # Getting Started
 1. Download the zip code of this file, then extract it.
