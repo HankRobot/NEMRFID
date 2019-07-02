@@ -5,7 +5,7 @@ import picamera
 bot = telegram.Bot(token="880592734:AAE6UaNW787kdsFX6xA9RURYz6YezvofkFM")
 
 # Sets the id for the active chat
-chat_id=123456789
+chat_id='555564637'
 
 #Get the photo
 camera=picamera.PiCamera()

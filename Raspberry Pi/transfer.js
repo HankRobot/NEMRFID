@@ -14,36 +14,7 @@ function checkvalidity(hashstring)
         }
     });
 }
-/*
-function checkvalidity(hashstring){
-    var Curl = require('node-libcurl').Curl;
 
-    var curl = new Curl();
-    var url = 'http://40.90.163.184:3000/transaction/' + hashstring + '/status';
-    console.info(url);
-
-    //'http://40.90.163.184:3000/transaction/FC1881E0B2F55866C7BB85B40420E40D1D90C2B624A18EA4851D8FA96D940555/status'
-    curl.setOpt( 'URL', url);
-    curl.setOpt( 'FOLLOWLOCATION', true );
-
-    curl.on( 'end', function( statusCode, body, headers ) {
-        const user = JSON.parse(body);
-        if (statusCode==200 && user['status']=='Success') {
-            console.info("Success!");
-        }
-        else{
-            console.info("Transaction Failed");
-        }
-        this.close();
-    });
-
-    curl.on( 'error', function ( err, errCode ) {
-        this.close();
-    });
-
-    curl.perform();
-}
-*/
 const Account = nem2Sdk.Account,
     Address = nem2Sdk.Address,
     Deadline = nem2Sdk.Deadline,
@@ -88,9 +59,7 @@ const signedTransaction = account.sign(transferTransaction, networkGenerationHas
 /* start block 03 */
 const transactionHttp = new TransactionHttp('http://40.90.163.184:3000');    //your node, both sender and receiver have to be on the same node
 
-transactionHttp
-    .announce(signedTransaction)
-    .subscribe(x => console.log(x), err => console.error(err));
+transactionHttp.announce(signedTransaction);
 /* end block 03 */
 
 setTimeout(function(){checkvalidity(signedTransaction.hash.toString())},500);
