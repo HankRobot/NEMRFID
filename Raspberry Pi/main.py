@@ -46,7 +46,7 @@ while True:
         print(privatekey)
 
         result = subprocess.check_output(["node","transfer.js",privatekey])
-        result = codecs.decode(s,'unicode_escape')
+        result = codecs.decode(result,'unicode_escape')
         print(s)
         
         if(result=="Success!"):
