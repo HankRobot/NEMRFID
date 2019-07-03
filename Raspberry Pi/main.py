@@ -50,6 +50,6 @@ while True:
         print(result)
         
         telegram_bot_takepicture()
-        telegram_bot_sendtext("This person scanned his RFID")
+        telegram_bot_sendtext("This person scanned his RFID" + " " + result)
         
     
