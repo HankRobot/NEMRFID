@@ -19,6 +19,31 @@
 // Singleton instance of the radio driver
 RH_RF95 rf95(RFM95_CS, RFM95_INT);
 
+#include "pitches.h"
+
+// notes in the melody:
+int melody[] = {NOTE_CS8};
+
+// note durations: 4 = quarter note, 8 = eighth note, etc.:
+int noteDurations[] = {4};
+
+void playmusic(){
+  for (int thisNote = 0; thisNote < 1; thisNote++) {
+
+    // to calculate the note duration, take one second divided by the note type.
+    //e.g. quarter note = 1000 / 4, eighth note = 1000/8, etc.
+    int noteDuration = 1000 / noteDurations[thisNote];
+    tone(8, melody[thisNote], noteDuration);
+
+    // to distinguish the notes, set a minimum time between them.
+    // the note's duration + 30% seems to work well:
+    int pauseBetweenNotes = noteDuration * 1.30;
+    delay(pauseBetweenNotes);
+    // stop the tone playing:
+    noTone(8);
+  }
+}
+
 void setup() 
 {   
   pinMode(RFM95_RST, OUTPUT);
@@ -67,6 +92,7 @@ void loop()
 
     if (rf95.recv(buf, &len))
     {
+      playmusic();
       Serial.print("Got: ");
       Serial.print((char*)buf);
       Serial.print(" RSSI: ");
