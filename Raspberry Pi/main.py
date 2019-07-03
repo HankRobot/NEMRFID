@@ -43,7 +43,7 @@ while True:
         password = input()
         bpass = str.encode(serialID+password)
         privatekey = hashlib.sha256(bpass).hexdigest()
-        print(privatekey)
+        #print(privatekey)
 
         result = subprocess.check_output(["node","transfer.js",privatekey])
         result = codecs.decode(result,'unicode_escape')

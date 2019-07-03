@@ -1,0 +1,10 @@
+C:\Users\User\Desktop\NEM IoT UI\NEM IoT UI\bin\Debug\NEM IoT UI.exe.config
+C:\Users\User\Desktop\NEM IoT UI\NEM IoT UI\bin\Debug\NEM IoT UI.exe
+C:\Users\User\Desktop\NEM IoT UI\NEM IoT UI\bin\Debug\NEM IoT UI.pdb
+C:\Users\User\Desktop\NEM IoT UI\NEM IoT UI\obj\Debug\NEM IoT UI.csprojAssemblyReference.cache
+C:\Users\User\Desktop\NEM IoT UI\NEM IoT UI\obj\Debug\NEM_IoT_UI.Form1.resources
+C:\Users\User\Desktop\NEM IoT UI\NEM IoT UI\obj\Debug\NEM_IoT_UI.Properties.Resources.resources
+C:\Users\User\Desktop\NEM IoT UI\NEM IoT UI\obj\Debug\NEM IoT UI.csproj.GenerateResource.cache
+C:\Users\User\Desktop\NEM IoT UI\NEM IoT UI\obj\Debug\NEM IoT UI.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\NEM IoT UI\NEM IoT UI\obj\Debug\NEM IoT UI.exe
+C:\Users\User\Desktop\NEM IoT UI\NEM IoT UI\obj\Debug\NEM IoT UI.pdb
