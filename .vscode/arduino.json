@@ -2,5 +2,5 @@
     "board": "arduino:avr:uno",
     "port": "COM24",
     "sketch": "Arduino/server/server.ino",
-    "programmer": "Arduino as ISP"
+    "programmer": "AVRISP mkII"
 }

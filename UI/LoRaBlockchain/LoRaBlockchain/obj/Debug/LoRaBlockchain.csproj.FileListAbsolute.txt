@@ -1,0 +1,10 @@
+C:\Users\User\Desktop\LoRaBlockchain\UI\LoRaBlockchain\LoRaBlockchain\bin\Debug\LoRaBlockchain.exe.config
+C:\Users\User\Desktop\LoRaBlockchain\UI\LoRaBlockchain\LoRaBlockchain\bin\Debug\LoRaBlockchain.exe
+C:\Users\User\Desktop\LoRaBlockchain\UI\LoRaBlockchain\LoRaBlockchain\bin\Debug\LoRaBlockchain.pdb
+C:\Users\User\Desktop\LoRaBlockchain\UI\LoRaBlockchain\LoRaBlockchain\obj\Debug\LoRaBlockchain.csprojAssemblyReference.cache
+C:\Users\User\Desktop\LoRaBlockchain\UI\LoRaBlockchain\LoRaBlockchain\obj\Debug\LoRaBlockchain.Properties.Resources.resources
+C:\Users\User\Desktop\LoRaBlockchain\UI\LoRaBlockchain\LoRaBlockchain\obj\Debug\LoRaBlockchain.csproj.GenerateResource.cache
+C:\Users\User\Desktop\LoRaBlockchain\UI\LoRaBlockchain\LoRaBlockchain\obj\Debug\LoRaBlockchain.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\LoRaBlockchain\UI\LoRaBlockchain\LoRaBlockchain\obj\Debug\LoRaBlockchain.exe
+C:\Users\User\Desktop\LoRaBlockchain\UI\LoRaBlockchain\LoRaBlockchain\obj\Debug\LoRaBlockchain.pdb
+C:\Users\User\Desktop\LoRaBlockchain\UI\LoRaBlockchain\LoRaBlockchain\obj\Debug\LoRaBlockchain.Form1.resources
