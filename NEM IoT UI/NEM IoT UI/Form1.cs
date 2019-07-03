@@ -26,13 +26,11 @@ namespace NEM_IoT_UI
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            // full path of python interpreter 
-            string python = @"C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.7_3.7.1008.0_x64__qbz5n2kfra8p0\python.exe";
+            string python = @"python.exe";
 
             // python app to call 
             string myPythonApp = @"main.py";
 
-            // Create new process start info 
             // Create new process start info 
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
 
@@ -66,6 +64,9 @@ namespace NEM_IoT_UI
             // wait exit signal from the app we called and then close it. 
             myProcess.WaitForExit();
             myProcess.Close();
+
+            // write the output we got from python app 
+            MessageBox.Show(new Form { TopMost = true }, one + "\n" + two + "\n" + three, "T-shirt size result");
         }
     }
 }
