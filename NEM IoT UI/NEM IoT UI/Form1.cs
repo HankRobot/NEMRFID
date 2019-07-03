@@ -21,5 +21,10 @@ namespace NEM_IoT_UI
         {
             Application.Exit();
         }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
