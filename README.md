@@ -12,6 +12,10 @@ This repository is about RFID info transaction via LoRa nodes using NEM Catapult
 7. main.py, the main code to be run on the raspberry pi.
 8. transfer.js, executed by main.py via shell to transfer mosaics to the blockchain.
 
+#Libraries for the Arduino
+1. https://github.com/CytronTechnologies/RadioHead for the LoRa Shield to work.
+2. https://github.com/miguelbalboa/rfid/archive/master.zip for the RFID hardware to work.
+
 # Getting Started
 1. Download the zip code of this file, then extract it.
 1. Alternatively you can fork this project and open in Visual Studios and use the Team Explorer in Visual Studios to help you clone the entire project.

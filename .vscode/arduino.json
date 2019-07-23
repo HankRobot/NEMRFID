@@ -1,6 +1,6 @@
 {
     "board": "arduino:avr:uno",
     "port": "COM24",
-    "sketch": "Arduino/server/server.ino",
+    "sketch": "Arduino/RFIDRead/RFIDRead.ino",
     "programmer": "AVRISP mkII"
 }

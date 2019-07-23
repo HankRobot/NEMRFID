@@ -51,7 +51,7 @@ void loop()
   //Serial.println();
   //Serial.print("Message : ");
   content.toUpperCase();
-  if (content.substring(1) == "0B 12 20 23"){ //change here the UID of the card/cards that you want to give access
+  if (content.substring(1) == "44 F9 3C D9"){ //change here the UID of the card/cards that you want to give access
     digitalWrite(4,HIGH);
     //Serial.println("Authorized access, sendinf to LoRaClient ID: 0B 12 20 23" );
     //Serial.println();

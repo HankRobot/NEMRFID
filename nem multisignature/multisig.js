@@ -36,10 +36,10 @@ const cosignAggregateBondedTransaction = (transaction, account) => {
 /* end block 01 */
 
 /* start block 02 */
-const privateKey = process.env.PRIVATE_KEY;
+const privateKey = "F7903153811C81FD52019EABD2ABC709E96E81364CD049D88878784D2AB6525A";
 const account = Account.createFromPrivateKey(privateKey, NetworkType.MIJIN_TEST);
 
-const nodeUrl = 'http://localhost:3000';
+const nodeUrl = 'http://40.90.163.184:3000';
 const accountHttp = new AccountHttp(nodeUrl);
 const transactionHttp = new TransactionHttp(nodeUrl);
 
