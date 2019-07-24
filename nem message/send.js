@@ -20,10 +20,10 @@ exports.__esModule = true;
 var nem2_sdk_1 = require("nem2-sdk");
 
 /* start block 01 */
-var privateKey = "694106D8410D6BD1AAEEC1A468D47BA940130CC7DF774100B6DE3B9CBDE26BC7"; //sender
+var privateKey = "73DF235222244CAFC1B1FDDA31DFC7D3AAC0142FB4087CA39D26D4079C999749"; //sender
 var account = nem2_sdk_1.Account.createFromPrivateKey(privateKey, nem2_sdk_1.NetworkType.MIJIN_TEST); //retrieve sender account
 
-var republicKey = "CE674B3EC2645EE7EB65902A6CC4C84BE531F90BA3AFE06E010A74B6E5766D39"; //receiver
+var republicKey = "D76D847DA7DBFE8885CC4937B8C1E4BB48AC0F20FE06BC9C3B8917F47975C94A"; //receiver
 var republicAccount = nem2_sdk_1.PublicAccount.createFromPublicKey(republicKey, nem2_sdk_1.NetworkType.MIJIN_TEST); //receiver
 var encryptedMessage = account.encryptMessage('Hello Hank Bot Here!', republicAccount); //sender's message + receiver's public key merged to form an encryption
 /* end block 01 */
@@ -39,7 +39,7 @@ console.log(signedTransaction.hash);
 /* end block 03 */
 
 /* start block 04 */
-var transactionHttp = new nem2_sdk_1.TransactionHttp('http://40.90.163.184:3000');
+var transactionHttp = new nem2_sdk_1.TransactionHttp('http://52.194.207.217:3000');
 transactionHttp
     .announce(signedTransaction)
     .subscribe(function (x) { return console.log(x); }, function (err) { return console.error(err); });
