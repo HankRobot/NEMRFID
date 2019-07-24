@@ -20,10 +20,10 @@ exports.__esModule = true;
 var nem2_sdk_1 = require("nem2-sdk");
 
 /* start block 01 */
-var privateKey = "73DF235222244CAFC1B1FDDA31DFC7D3AAC0142FB4087CA39D26D4079C999749"; //sender
+var privateKey = "41456A59CF814D5BCFC7107B47A751C0585359BD0C8BE1E3A7425ACB48F4FEED"; //sender
 var account = nem2_sdk_1.Account.createFromPrivateKey(privateKey, nem2_sdk_1.NetworkType.MIJIN_TEST); //retrieve sender account
 
-var republicKey = "D76D847DA7DBFE8885CC4937B8C1E4BB48AC0F20FE06BC9C3B8917F47975C94A"; //receiver
+var republicKey = "B8CFB04B8B3BE478C0FC53D14203F45325A50556BF8C92189C6741A38484030D"; //receiver
 var republicAccount = nem2_sdk_1.PublicAccount.createFromPublicKey(republicKey, nem2_sdk_1.NetworkType.MIJIN_TEST); //receiver
 var encryptedMessage = account.encryptMessage('Hello Hank Bot Here!', republicAccount); //sender's message + receiver's public key merged to form an encryption
 /* end block 01 */

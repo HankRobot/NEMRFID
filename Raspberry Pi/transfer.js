@@ -1,9 +1,10 @@
 const nem2Sdk = require("nem2-sdk");
+const node = 'http://3.1.202.148:3000';
 
 function checkvalidity(hashstring)
 {
     var request=require('request');
-    var url = 'http://40.90.163.184:3000/transaction/' + hashstring + '/status';
+    var url = node + '/transaction/' + hashstring + '/status';
     request.get(url,null,function(err,res,body){
         const user = JSON.parse(body);
         if (res.statusCode==200 && user['status']=='Success') {
@@ -38,7 +39,7 @@ for (var i = 2; i < process.argv.length; i++) {
 
 /* start block 01 */
 const mosaicId = "77a1969932d987d7";     						//your mosaic mosaicId
-const address = "SADR23O6XLZXVHUKI4BLBFXY2Z7BPRZEUW5ESAQ6";		//the person's address you want to send to
+const address = "SC7APJ3C6BWK3DWVMNUJRQXETYMIC6Y2OG557QHU";		//the person's address you want to send to
 
 const transferTransaction = TransferTransaction.create(
     Deadline.create(),
@@ -61,7 +62,7 @@ console.debug(signedTransaction);
 /* end block 02 */
 
 /* start block 03 */
-const transactionHttp = new TransactionHttp('http://40.90.163.184:3000');    //your node, both sender and receiver have to be on the same node
+const transactionHttp = new TransactionHttp(node);    //your node, both sender and receiver have to be on the same node
 
 transactionHttp.announce(signedTransaction);
 /* end block 03 */
