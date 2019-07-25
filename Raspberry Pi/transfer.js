@@ -1,10 +1,11 @@
 const nem2Sdk = require("nem2-sdk");
-const node = 'http://3.1.202.148:3000';
+const node = 'http://52.194.207.217:3000';
 
 function checkvalidity(hashstring)
 {
     var request=require('request');
     var url = node + '/transaction/' + hashstring + '/status';
+    console.log(url);
     request.get(url,null,function(err,res,body){
         const user = JSON.parse(body);
         if (res.statusCode==200 && user['status']=='Success') {
@@ -28,17 +29,17 @@ const Account = nem2Sdk.Account,
     UInt64 = nem2Sdk.UInt64;
 
 //Retrieve shell 
-var privateKey = "";
-
+var privateKey = "75938334DAFA7EF743FB2A9694C8025648959DC8FDE61678AC99281826BED7A3";
+/*
 for (var i = 2; i < process.argv.length; i++) {
     privateKey += process.argv[i];
 }
-
+*/
 //console.log("Your private key is:")
 //console.log(privateKey)
 
 /* start block 01 */
-const mosaicId = "77a1969932d987d7";     						//your mosaic mosaicId
+const mosaicId = "77a1969932d987d7";     						        //your mosaic mosaicId
 const address = "SC7APJ3C6BWK3DWVMNUJRQXETYMIC6Y2OG557QHU";		//the person's address you want to send to
 
 const transferTransaction = TransferTransaction.create(
