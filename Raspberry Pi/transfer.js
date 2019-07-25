@@ -34,9 +34,6 @@ for (var i = 2; i < process.argv.length; i++) {
     privateKey += process.argv[i];
 }
 
-//console.log("Your private key is:")
-//console.log(privateKey)
-
 /* start block 01 */
 const mosaicId = "77a1969932d987d7";     						        //your mosaic mosaicId
 const address = "SC7APJ3C6BWK3DWVMNUJRQXETYMIC6Y2OG557QHU";		//the person's address you want to send to
@@ -51,8 +48,8 @@ const transferTransaction = TransferTransaction.create(
 
 /* end block 01 */
 
-/* start block 02 */
-const networkGenerationHash = "9F1979BEBA29C47E59B40393ABB516801A353CFC0C18BC241FEDE41939C907E7";
+/* start block 02 get the meta generation hash at http://52.194.207.217:3000/block/1 */
+const networkGenerationHash = "9F1979BEBA29C47E59B40393ABB516801A353CFC0C18BC241FEDE41939C907E7"; 
 const account = Account.createFromPrivateKey(privateKey, NetworkType.MIJIN_TEST);
 const signedTransaction = account.sign(transferTransaction, networkGenerationHash);
 /* end block 02 */
@@ -63,6 +60,6 @@ const transactionHttp = new TransactionHttp(node);    //your node, both sender a
 transactionHttp.announce(signedTransaction);
 /* end block 03 */
 
-setTimeout(function(){checkvalidity(signedTransaction.hash.toString())},500);
+setTimeout(function(){checkvalidity(signedTransaction.hash.toString())},1000);
 
 
