@@ -3,16 +3,15 @@ const node = 'http://52.194.207.217:3000';
 
 function checkvalidity(hashstring)
 {
-    var request=require('request');
+    const request = require('request');
     var url = node + '/transaction/' + hashstring + '/status';
-    console.log(url);
-    request.get(url,null,function(err,res,body){
+    request(url, function (error, response, body) {
         const user = JSON.parse(body);
-        if (res.statusCode==200 && user['status']=='Success') {
-            console.info("Success!");
+        if ( (response && response.statusCode) == 200 || user["status"] == "Success") {
+            console.log("Transaction Success!");
         }
         else{
-            console.info("Transaction Failed");
+            console.log("Transaction failed");
         }
     });
 }
@@ -29,12 +28,12 @@ const Account = nem2Sdk.Account,
     UInt64 = nem2Sdk.UInt64;
 
 //Retrieve shell 
-var privateKey = "75938334DAFA7EF743FB2A9694C8025648959DC8FDE61678AC99281826BED7A3";
-/*
+var privateKey = "";
+
 for (var i = 2; i < process.argv.length; i++) {
     privateKey += process.argv[i];
 }
-*/
+
 //console.log("Your private key is:")
 //console.log(privateKey)
 
@@ -49,17 +48,13 @@ const transferTransaction = TransferTransaction.create(
     PlainMessage.create('enjoy your ticket!'),
     NetworkType.MIJIN_TEST
 );
+
 /* end block 01 */
 
 /* start block 02 */
-const networkGenerationHash = process.env.NETWORK_GENERATION_HASH;
-console.debug("Hash:");
-console.debug(networkGenerationHash);
-console.debug("Transaction");
-console.debug(transferTransaction);
+const networkGenerationHash = "9F1979BEBA29C47E59B40393ABB516801A353CFC0C18BC241FEDE41939C907E7";
 const account = Account.createFromPrivateKey(privateKey, NetworkType.MIJIN_TEST);
 const signedTransaction = account.sign(transferTransaction, networkGenerationHash);
-console.debug(signedTransaction);
 /* end block 02 */
 
 /* start block 03 */
