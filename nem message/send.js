@@ -20,10 +20,10 @@ exports.__esModule = true;
 var nem2_sdk_1 = require("nem2-sdk");
 
 /* start block 01 */
-var privateKey = "75938334DAFA7EF743FB2A9694C8025648959DC8FDE61678AC99281826BED7A3"; //sender
+var privateKey = "9FF05B6E961CCFA34ED4868E0AE701BCED40876EBCB09891FF57587AF866E303"; //sender
 var account = nem2_sdk_1.Account.createFromPrivateKey(privateKey, nem2_sdk_1.NetworkType.MIJIN_TEST); //retrieve sender account
 
-var republicKey = "CAB20564F345507D1C75FE0BEE8EA36720AE5FC6DCDDE7F04BFECE44E1EC45F1"; //receiver
+var republicKey = "D76D847DA7DBFE8885CC4937B8C1E4BB48AC0F20FE06BC9C3B8917F47975C94A"; //receiver
 var republicAccount = nem2_sdk_1.PublicAccount.createFromPublicKey(republicKey, nem2_sdk_1.NetworkType.MIJIN_TEST); //receiver
 var encryptedMessage = account.encryptMessage('Hello Hank Bot Here!', republicAccount); //sender's message + receiver's public key merged to form an encryption
 /* end block 01 */
@@ -33,13 +33,13 @@ var transferTransaction = nem2_sdk_1.TransferTransaction.create(nem2_sdk_1.Deadl
 /* end block 02 */
 
 /* start block 03 */
-var networkGenerationHash = process.env.NETWORK_GENERATION_HASH;
+var networkGenerationHash = "2824938729EE889487E3280D65D86CB316E3A9BE6DB7D561B3AFFF951A90E4CE";
 var signedTransaction = account.sign(transferTransaction, networkGenerationHash);
 console.log(signedTransaction.hash);
 /* end block 03 */
 
 /* start block 04 */
-var transactionHttp = new nem2_sdk_1.TransactionHttp('http://52.194.207.217:3000');
+var transactionHttp = new nem2_sdk_1.TransactionHttp('http://54.169.58.18:3000');
 transactionHttp
     .announce(signedTransaction)
     .subscribe(function (x) { return console.log(x); }, function (err) { return console.error(err); });

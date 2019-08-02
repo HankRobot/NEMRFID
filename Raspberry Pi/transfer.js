@@ -1,5 +1,5 @@
 const nem2Sdk = require("nem2-sdk");
-const node = 'http://52.194.207.217:3000';
+const node = 'http://54.169.58.18:3000';
 
 function checkvalidity(hashstring)
 {
@@ -35,8 +35,8 @@ for (var i = 2; i < process.argv.length; i++) {
 }
 
 /* start block 01 */
-const mosaicId = "77a1969932d987d7";     						        //your mosaic mosaicId
-const address = "SC7APJ3C6BWK3DWVMNUJRQXETYMIC6Y2OG557QHU";		//the person's address you want to send to
+const mosaicId = "66b82ba8c5a01510";     						        //your mosaic mosaicId
+const address = "SCUDPYTP6PVIQY6L7HVPWGLPGZ7GBDGRLWKMITFC";		//the person's address you want to send to
 
 const transferTransaction = TransferTransaction.create(
     Deadline.create(),
@@ -49,9 +49,10 @@ const transferTransaction = TransferTransaction.create(
 /* end block 01 */
 
 /* start block 02 get the meta generation hash at http://52.194.207.217:3000/block/1 */
-const networkGenerationHash = "9F1979BEBA29C47E59B40393ABB516801A353CFC0C18BC241FEDE41939C907E7"; 
+const networkGenerationHash = "2824938729EE889487E3280D65D86CB316E3A9BE6DB7D561B3AFFF951A90E4CE"; 
 const account = Account.createFromPrivateKey(privateKey, NetworkType.MIJIN_TEST);
 const signedTransaction = account.sign(transferTransaction, networkGenerationHash);
+console.log(signedTransaction.hash)
 /* end block 02 */
 
 /* start block 03 */
@@ -60,6 +61,6 @@ const transactionHttp = new TransactionHttp(node);    //your node, both sender a
 transactionHttp.announce(signedTransaction);
 /* end block 03 */
 
-setTimeout(function(){checkvalidity(signedTransaction.hash.toString())},1000);
+setTimeout(function(){checkvalidity(signedTransaction.hash.toString())},2000);
 
 
