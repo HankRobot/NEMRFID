@@ -38,7 +38,7 @@ var transferTransaction = nem2_sdk_1.TransferTransaction.create(
     )
 //begin code calculation    
 console.log(transferTransaction.serialize());
-transferTransaction.maxFee = nem2_sdk_1.UInt64.fromUint(parseInt(transferTransaction.serialize().substring(0,4),16)*100);
+transferTransaction.maxFee = nem2_sdk_1.UInt64.fromUint(parseInt(transferTransaction.serialize().substring(0,8),16)*100);
 console.log(transferTransaction.maxFee);
 /* end block 02 */
 /* start block 03 */
