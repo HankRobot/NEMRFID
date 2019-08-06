@@ -1,5 +1,5 @@
 const nem2Sdk = require("nem2-sdk");
-const node = 'http://54.169.58.18:3000';
+const node = 'http://3.1.202.148:3000';
 
 function checkvalidity(hashstring)
 {
@@ -36,22 +36,24 @@ for (var i = 2; i < process.argv.length; i++) {
 }
 
 /* start block 01 */
-const mosaicId = "66b82ba8c5a01510";     						        //your mosaic mosaicId
-const address = "SB22YSLN6IM6SNJPHAQN5F2RM6FMV74GCU3HJZDO";		//the person's address you want to send to
+const mosaicId = "77a1969932d987d7";     						        //your mosaic mosaicId
+const address = "SCUDPYTP6PVIQY6L7HVPWGLPGZ7GBDGRLWKMITFC";		//the person's address you want to send to
 
 const transferTransaction = TransferTransaction.create(
     Deadline.create(),
     Address.createFromRawAddress(address),
     [new Mosaic(new MosaicId(mosaicId), UInt64.fromUint(1))],
     PlainMessage.create('enjoy your ticket!'),
-    NetworkType.MIJIN_TEST,
-    UInt64.fromUint(100000000000)
+    NetworkType.MIJIN_TEST
 );
 
+console.log(transferTransaction.serialize());
+transferTransaction.maxFee = UInt64.fromUint(parseInt(transferTransaction.serialize().substring(0,2),16)*100);
+console.log(transferTransaction.maxFee);
 /* end block 01 */
 
-/* start block 02 get the meta generation hash at http://52.194.207.217:3000/block/1 */
-const networkGenerationHash = "2824938729EE889487E3280D65D86CB316E3A9BE6DB7D561B3AFFF951A90E4CE"; 
+/* start block 02 get the meta generation hash at http://3.1.202.148:3000/block/1 */
+const networkGenerationHash = "9F1979BEBA29C47E59B40393ABB516801A353CFC0C18BC241FEDE41939C907E7"; 
 const account = Account.createFromPrivateKey(privateKey, NetworkType.MIJIN_TEST);
 const signedTransaction = account.sign(transferTransaction, networkGenerationHash);
 console.log(signedTransaction.hash)
