@@ -37,7 +37,7 @@ for (var i = 2; i < process.argv.length; i++) {
 
 /* start block 01 */
 const mosaicId = "77a1969932d987d7";     						        //your mosaic mosaicId
-const address = "SCUDPYTP6PVIQY6L7HVPWGLPGZ7GBDGRLWKMITFC";		//the person's address you want to send to
+const address = "SC7ZQDFH36M7RJDXAMX2A3MRBXRRW2YY4SVGCLAF";		//the person's address you want to send to, I sent mine back because I wanna save cat.currency
 
 const transferTransaction = TransferTransaction.create(
     Deadline.create(),
@@ -48,7 +48,7 @@ const transferTransaction = TransferTransaction.create(
 );
 
 console.log(transferTransaction.serialize());
-transferTransaction.maxFee = UInt64.fromUint(parseInt(transferTransaction.serialize().substring(0,2),16)*100);
+transferTransaction.maxFee = UInt64.fromUint(parseInt(transferTransaction.serialize().substring(0,2),16)*100); //Max Fees are now required on elephant v2
 console.log(transferTransaction.maxFee);
 /* end block 01 */
 
