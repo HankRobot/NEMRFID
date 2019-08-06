@@ -5,6 +5,7 @@ function checkvalidity(hashstring)
 {
     const request = require('request');
     var url = node + '/transaction/' + hashstring + '/status';
+    console.log(url);
     request(url, function (error, response, body) {
         const user = JSON.parse(body);
         if ( (response && response.statusCode) == 200 || user["status"] == "Success") {
@@ -36,14 +37,15 @@ for (var i = 2; i < process.argv.length; i++) {
 
 /* start block 01 */
 const mosaicId = "66b82ba8c5a01510";     						        //your mosaic mosaicId
-const address = "SCUDPYTP6PVIQY6L7HVPWGLPGZ7GBDGRLWKMITFC";		//the person's address you want to send to
+const address = "SB22YSLN6IM6SNJPHAQN5F2RM6FMV74GCU3HJZDO";		//the person's address you want to send to
 
 const transferTransaction = TransferTransaction.create(
     Deadline.create(),
     Address.createFromRawAddress(address),
     [new Mosaic(new MosaicId(mosaicId), UInt64.fromUint(1))],
     PlainMessage.create('enjoy your ticket!'),
-    NetworkType.MIJIN_TEST
+    NetworkType.MIJIN_TEST,
+    UInt64.fromUint(100000000000)
 );
 
 /* end block 01 */
@@ -58,7 +60,7 @@ console.log(signedTransaction.hash)
 /* start block 03 */
 const transactionHttp = new TransactionHttp(node);    //your node, both sender and receiver have to be on the same node
 
-transactionHttp.announce(signedTransaction);
+transactionHttp.announce(signedTransaction).subscribe(function (x) { return console.log(x); }, function (err) { return console.error(err); });
 /* end block 03 */
 
 setTimeout(function(){checkvalidity(signedTransaction.hash.toString())},2000);

@@ -20,26 +20,34 @@ exports.__esModule = true;
 var nem2_sdk_1 = require("nem2-sdk");
 
 /* start block 01 */
-var privateKey = "9FF05B6E961CCFA34ED4868E0AE701BCED40876EBCB09891FF57587AF866E303"; //sender
+var privateKey = "75938334DAFA7EF743FB2A9694C8025648959DC8FDE61678AC99281826BED7A3"; //sender
 var account = nem2_sdk_1.Account.createFromPrivateKey(privateKey, nem2_sdk_1.NetworkType.MIJIN_TEST); //retrieve sender account
 
-var republicKey = "AC414E31A9A08EC22AB2B0F78561A713D40E797AD0AF8920D570F7A0117E6680"; //receiver
+var republicKey = "B8CFB04B8B3BE478C0FC53D14203F45325A50556BF8C92189C6741A38484030D"; //receiver
 var republicAccount = nem2_sdk_1.PublicAccount.createFromPublicKey(republicKey, nem2_sdk_1.NetworkType.MIJIN_TEST); //receiver
 var encryptedMessage = account.encryptMessage('Hello Hank Bot Here!', republicAccount); //sender's message + receiver's public key merged to form an encryption
 /* end block 01 */
 
 /* start block 02 */
-var transferTransaction = nem2_sdk_1.TransferTransaction.create(nem2_sdk_1.Deadline.create(), republicAccount.address, [], encryptedMessage, nem2_sdk_1.NetworkType.MIJIN_TEST);
+var transferTransaction = nem2_sdk_1.TransferTransaction.create(
+    nem2_sdk_1.Deadline.create(),
+    republicAccount.address, 
+    [], 
+    encryptedMessage, 
+    nem2_sdk_1.NetworkType.MIJIN_TEST
+    )
+//begin code calculation
+console.log(transferTransaction.serialize());
+transferTransaction.maxFee = nem2_sdk_1.UInt64.fromUint(parseInt(transferTransaction.serialize().substring(0,2),16)*100);
+console.log(transferTransaction.maxFee);
 /* end block 02 */
-
 /* start block 03 */
-var networkGenerationHash = "2824938729EE889487E3280D65D86CB316E3A9BE6DB7D561B3AFFF951A90E4CE";
+var networkGenerationHash = "F669FE7D1FBAC0823334E5C01BD6D54E4F8B4D25AC8FEB24D15266FE6F1569CB";
 var signedTransaction = account.sign(transferTransaction, networkGenerationHash);
-console.log(signedTransaction.hash);
 /* end block 03 */
-
+console.log(signedTransaction.hash);
 /* start block 04 */
-var transactionHttp = new nem2_sdk_1.TransactionHttp('http://54.169.58.18:3000');
+var transactionHttp = new nem2_sdk_1.TransactionHttp('https://api.nf.catapult.luxtag.io');
 transactionHttp
     .announce(signedTransaction)
     .subscribe(function (x) { return console.log(x); }, function (err) { return console.error(err); });
