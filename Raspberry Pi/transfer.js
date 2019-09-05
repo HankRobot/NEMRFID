@@ -1,5 +1,5 @@
 const nem2Sdk = require("nem2-sdk");
-const node = 'http://3.1.202.148:3000';
+const node = 'https://jp5.nemesis.land:3001/';
 
 function checkvalidity(hashstring)
 {
@@ -52,7 +52,7 @@ transferTransaction.maxFee = UInt64.fromUint(parseInt(transferTransaction.serial
 console.log(transferTransaction.maxFee);
 /* end block 01 */
 
-/* start block 02 get the meta generation hash at http://3.1.202.148:3000/block/1 */
+/* start block 02 get the meta generation hash at https://jp5.nemesis.land:3001/block/1 */
 const networkGenerationHash = "9F1979BEBA29C47E59B40393ABB516801A353CFC0C18BC241FEDE41939C907E7"; 
 const account = Account.createFromPrivateKey(privateKey, NetworkType.MIJIN_TEST);
 const signedTransaction = account.sign(transferTransaction, networkGenerationHash);
